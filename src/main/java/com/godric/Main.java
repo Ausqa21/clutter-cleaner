@@ -45,12 +45,12 @@ public class Main implements Callable<Integer> {
             for (Path path: matchedFiles) {
                 boolean result = path.toFile().renameTo(new File(targetDirectory.toFile() + File.separator + path.toFile().getName()));
                 if (!result) {
-                    System.out.printf("Moving %s to %s failed. Check and try again", path, targetDirectory);
+                    System.out.printf("Moving %s to %s failed. Check and try again%n", path, targetDirectory);
                     return 1;
                 }
             }
 
-            System.out.printf("%s file(s) moved to %s successfully", matchedFiles.size(), targetDirectory);
+            System.out.printf("%s file(s) moved to %s successfully%n", matchedFiles.size(), targetDirectory);
         } catch (FileAlreadyExistsException fae) {
             System.out.printf("Can't create directory %s because a file/directory with the same name exists" +
                     " at the same location. Check and try again", targetDirectoryString);
